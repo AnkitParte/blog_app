@@ -2,3 +2,48 @@
 .bg{
     background-color: whitesmoke;
 }
+
+.sgrid{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    gap: 10px;
+    padding-top: 1rem;
+}
+.topics{
+    width: 22%;
+    /* border: 1px solid #DCDCDC;
+    background-color: white;
+    border-radius: 6px; */
+    /* padding: 1rem; */
+}
+.content{
+    width: 50%;
+    /* border: 1px solid #DCDCDC;
+    background-color: white;
+    border-radius: 6px;
+    padding: 1rem; */
+}
+/* .content>div{
+    border: 1px solid #DCDCDC;
+    background-color: white;
+    border-radius: 6px;
+    padding: 1rem;
+    margin-bottom: 10px;
+} */
+.interests{
+    width: 26%;
+    /* border: 1px solid #DCDCDC;
+    background-color: white;
+    border-radius: 6px;
+    padding: 1rem; */
+}
+.feed{
+    font-size: 18px;
+    font-weight: 700;
+    text-align: left;
+    color: black;
+    margin-bottom: 10px;
+    margin-top: 5px;
+    margin-left: 4px;
+}

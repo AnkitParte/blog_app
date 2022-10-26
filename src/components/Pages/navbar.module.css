@@ -19,8 +19,11 @@
     justify-content: space-between;
 }
 .imgOne{
-    width: 85%;
-    height: 70%;
+    width: 90%;
+    height: 60%;
+}
+.imgOne:hover{
+    cursor: pointer;
 }
 .two{
     font-size: 17px;
@@ -28,4 +31,8 @@
     width: 17%;
     margin-right: 30px;
     justify-content: space-between;
+}
+
+.navspan:hover{
+    cursor: pointer;
 }

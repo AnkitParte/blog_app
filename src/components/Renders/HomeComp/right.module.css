@@ -1,0 +1,51 @@
+.parent>div>:nth-child(1){
+    font-size: 18px;
+    font-weight: 700;
+    text-align: left;
+    color: gray;
+}
+.parent>div>:nth-child(1):hover{
+    color: #3B49DF;
+    cursor: pointer;
+}
+
+.help{
+    border: 1px solid #DCDCDC;
+    background-color: white;
+    border-radius: 6px;
+    padding: 0.8rem;
+    margin-bottom:10px ;
+}
+
+.discuss{
+    border: 1px solid #DCDCDC;
+    background-color: white;
+    border-radius: 6px;
+    padding: 0.8rem;
+    margin-bottom:10px ;
+}
+
+.explikeimfive{
+    border: 1px solid #DCDCDC;
+    background-color: white;
+    border-radius: 6px;
+    padding: 0.8rem;
+    margin-bottom:10px ;
+}
+
+.question{
+    text-align: left;
+    margin-top: 0.8rem;
+    margin-bottom: 0.8rem;
+}
+.question>div:nth-child(1){
+    font-size: 17px;
+    font-weight: 450;
+}
+.question>div:nth-child(2){
+    font-size: 12px;
+}
+.question>div:nth-child(1):hover{
+    cursor: pointer;
+    color: #3B49DF;
+}

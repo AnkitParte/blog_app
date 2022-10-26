@@ -2,3 +2,32 @@
 .bg{
     background-color: whitesmoke;
 }
+
+.login{
+    width: 50%;
+    margin:auto;
+    border: 1px solid #DCDCDC;
+    border-radius: 6px;
+    padding: 3rem;
+    background-color: white;
+}
+
+.h2tag{
+    font-size: 30px;
+    font-weight: 700;
+}
+.divtag{
+    font-size: 16px;
+}
+.text{
+    font-size: 14px;
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+
+.navspan{
+    color:#3B49DF;
+}
+.navspan:hover{
+    cursor: pointer;
+}

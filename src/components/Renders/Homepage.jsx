@@ -1,12 +1,26 @@
-import { Box, Center } from "@chakra-ui/react";
+import { Box } from "@chakra-ui/react";
+import Left from "./HomeComp/Left";
+import Mid from "./HomeComp/Mid";
+import Right from "./HomeComp/Right";
 import styles from "./homepage.module.css";
 
-export default function Homepage(){
+export default function Homepage() {
 
-    return(<>
+    return (<>
         <Box className={styles.bg}>
-            <Center>Homepage</Center>
+            <Box className={styles.sgrid}>
+                <Box className={styles.topics}>
+                    <Left/>
+                </Box>
+                <Box className={styles.content}>
+                    <p className={styles.feed}>Daily feed</p>
+                    <Mid/>
+                </Box>
+                <Box className={styles.interests}>
+                    <Right/>
+                </Box>
+            </Box>
         </Box>
-        
+
     </>)
 }

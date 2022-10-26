@@ -1,0 +1,48 @@
+.navspan:hover{
+    cursor: pointer;
+}
+.navspan{
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+.topicsBox{
+    border: 1px solid #DCDCDC;
+    background-color: white;
+    border-radius: 6px;
+    padding: 0.8rem;
+}
+
+.topicsBox>div:nth-child(1){
+    font-size: 18px;
+    font-weight: 700;
+}
+.topicsBox>div:nth-child(2){
+    font-size: 14px;
+}
+.features>div{
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-align: left;
+    padding-left: 15px;
+    font-size: 16px;
+}
+.features>div:hover{
+    color: #3B49DF;
+    background-color: lightblue;
+    border-radius: 6px;
+    text-decoration: 1px solid #3B49DF underline;
+}
+.others>div{
+    padding-top: 3px;
+    padding-bottom: 3px;
+    text-align: left;
+    padding-left: 15px;
+    font-size: 16px;
+}
+.others>div:hover{
+    color: #3B49DF;
+    background-color: lightblue;
+    border-radius: 6px;
+    text-decoration: 1px solid #3B49DF underline;
+}

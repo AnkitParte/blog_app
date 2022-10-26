@@ -29,7 +29,7 @@ export default function Navbar() {
             </Box>
             <Box className={styles.two}>
                 <Center>
-                    <Text onClick={()=>nav("/login")}>Log In</Text>
+                    <Text className={styles.navspan} onClick={()=>nav("/login")}>Log In</Text>
                 </Center>
                 <Center>
                     <Button onClick={()=>nav("/signup")} size={"md"} variant="outline" color="blue" borderColor={"blue"}>Create account</Button>
