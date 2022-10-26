@@ -94,7 +94,7 @@ app.post("/login", async (req, res) => {
 })
 
 
-app.post("/refresh", async (req, res) => {
+app.get("/refresh", async (req, res) => {
     const refresh_token = req.headers.authorization;
 
     try {

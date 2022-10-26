@@ -1,0 +1,31 @@
+
+
+.navbar{
+    display: flex;
+    border-bottom: 1px solid #DCDCDC;
+    background-color: #FFFFFF;
+    width: 100%;
+    margin: auto;
+    justify-content: space-between;
+    font-size: 16px;
+    /* padding: 5px; */
+    
+}
+
+.one{
+    margin-left: 30px;
+    width: 30%;
+    display: flex;
+    justify-content: space-between;
+}
+.imgOne{
+    width: 85%;
+    height: 70%;
+}
+.two{
+    font-size: 17px;
+    display: flex;
+    width: 17%;
+    margin-right: 30px;
+    justify-content: space-between;
+}
