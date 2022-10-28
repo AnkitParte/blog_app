@@ -28,7 +28,7 @@ export default function Reviews(props) {
                         <Box>reply</Box>
                     </Box>
                 </Box>
-                {props?.reply ? <Checker username={props?.reply?.username} reply={props?.reply?.reply}/> : null}
+                {props?.reply ? <Checker username={props?.reply?.username} reply={props?.reply?.reply} /> : null}
                 {!box ? null :
                     <Box>
                         <Textarea placeholder={`reply to ${Username}`} />
@@ -47,21 +47,19 @@ export default function Reviews(props) {
 
 const Checker = ({ username, reply }) => {
     return (<>
-        <Box>
-            <Box>{username}</Box>
+        <Box className={styles.reviews}>
+            <Image src={x} />
             <Box>
-                {reply}
+                <Box>
+                    <Box>{username}</Box>
+                    <Box>
+                        {reply}
+                    </Box>
+                </Box>
+                
             </Box>
+
         </Box>
-        <Box>
-            <Box>
-                <Box><Icon as={AiOutlineLike} /></Box>
-                <Box>like</Box>
-            </Box>
-            <Box>
-                <Box ><ChatIcon /></Box>
-                <Box>reply</Box>
-            </Box>
-        </Box>
+
     </>)
 }
