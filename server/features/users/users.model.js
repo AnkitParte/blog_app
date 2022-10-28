@@ -4,7 +4,6 @@ const User = new Schema({
     email : String,
     password : String,
     username: String,
-    age: Number,
     role : { type: String,
         enum : ["user","admin"],
         default:"user"

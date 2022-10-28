@@ -1,4 +1,7 @@
 import { Box } from "@chakra-ui/react";
+import { useEffect } from "react";
+import {useDispatch, useSelector} from "react-redux";
+import { getBlogs } from "../../../Store/blog/blog.actions";
 import styles from "./mid.module.css";
 import Posts from "./Posts";
 
@@ -12,9 +15,15 @@ const posts = [
 
 
 export default function Mid() {
+    const {data} = useSelector(store=>store.blogs);
+    const dispatch = useDispatch();
+    //console.log(data);
+    useEffect(()=>{
+        dispatch(getBlogs());
+    },[])
     return (<>
         <Box className={styles.mid}>
-            {posts?.map((el)=>{
+            {data?.map((el)=>{
                 return <Posts key={el.id} {...el}/>
             })}
         </Box>

@@ -1,7 +1,21 @@
 import { Box, Button, Input, Text, FormControl, FormLabel, Checkbox } from "@chakra-ui/react";
+import { useState } from "react";
 import styles from "./login.module.css";
 
 export default function Login() {
+    const [form,setForm] = useState({});
+    const handleChange = (e)=>{
+        const {name,value} = e.target;
+        setForm({...form,[name]:value});
+    }
+    const handleSubmit = ()=>{
+        if(form.email === "" || form.password.length<=4){
+            alert("some thing went wrong!!!")
+            return;
+        }
+        Array.from(document.getElementsByTagName("input")).forEach((el)=>el.value=null);
+        console.log(form);
+    }
     return (<>
         <Box className={styles.bg}>
             <Box className={styles.login}>
@@ -10,21 +24,21 @@ export default function Login() {
                 <br />
                 <Button w={"100%"} mt={1} color={"white"} background="black" _hover={{background:"blackAlpha.900"}} size={"lg"}>Continue with Github</Button>
                 <br />
-                <Button w={"100%"} mt={1} colorScheme={"blue"} size={"lg"}>Continue with Google</Button>
+                <Button w={"100%"} mt={1} colorScheme={"twitter"} size={"lg"}>Continue with Twitter</Button>
                 <br />
                 <Text className={styles.text}>Have a password? Continue with your Email</Text>
                 <FormControl>
                     <FormLabel>Email</FormLabel>
-                    <Input placeholder="Enter you email address" />
+                    <Input name="email" onChange={handleChange} placeholder="Enter you email address" />
                 </FormControl>
                 <FormControl mt={1.5}>
                     <FormLabel>Password</FormLabel>
-                    <Input placeholder="Enter your Password" />
+                    <Input name="password" onChange={handleChange} placeholder="Enter your Password" />
                 </FormControl>
                 <Checkbox w={"100%"} mt={2} mb={2} colorScheme='blue' defaultChecked>
                     Remember me
                 </Checkbox>
-                <Button mt={2} color={"white"} background="#3B49DF" w="100%" size={"lg"}>Continue</Button>
+                <Button onClick={handleSubmit} mt={2} color={"white"} background="#3B49DF" w="100%" size={"lg"}>Continue</Button>
                 <br />
                 <br />
                 <Box color={"#3B49DF"} fontSize="14px">I forgot my password</Box>

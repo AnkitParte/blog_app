@@ -7,16 +7,16 @@ let x = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAOEAAADhCAMAAAAJbSJIAAAAM
 export default function Posts(props){
     let nav = useNavigate();
     return(<>
-        <Box className={styles.posts}>
+        <Box className={styles.posts} key={props?._id}>
             <Box>
                 <Image src={x}/>
-                <Box>{props.user}</Box>
+                <Box>{props.Author.username}</Box>
             </Box>
-            <Box onClick={()=>nav(`/posts/${props.id}`)}>
-                {props.title}
+            <Box onClick={()=>nav(`/posts/${props._id}`)}>
+                {props.Title}
             </Box>
             <Box>
-                {props.comment}{" "}comment
+                {props?.NumComments || 0}{" "}comment
             </Box>
         </Box>
     </>)

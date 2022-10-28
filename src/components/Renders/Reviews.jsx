@@ -6,17 +6,16 @@ import { x } from "./Article";
 import { useState } from "react";
 
 let Username = "Deng lak"
-export default function Reviews() {
+export default function Reviews(props) {
     const [box, setBox] = useState(false);
     return (<>
         <Box className={styles.reviews}>
             <Image src={x} />
             <Box>
                 <Box>
-                    <Box>Username</Box>
+                    <Box>{props?.username}</Box>
                     <Box>
-                        I have to say, it's so nice that "lazy" finally is an attribute.
-                        Using the intersect API to judge when to load an image was so hard in the past.
+                        {props?.comment}
                     </Box>
                 </Box>
                 <Box>
@@ -29,6 +28,7 @@ export default function Reviews() {
                         <Box>reply</Box>
                     </Box>
                 </Box>
+                {props?.reply ? <Checker username={props?.reply?.username} reply={props?.reply?.reply}/> : null}
                 {!box ? null :
                     <Box>
                         <Textarea placeholder={`reply to ${Username}`} />
@@ -40,6 +40,27 @@ export default function Reviews() {
 
                     </Box>
                 }
+            </Box>
+        </Box>
+    </>)
+}
+
+const Checker = ({ username, reply }) => {
+    return (<>
+        <Box>
+            <Box>{username}</Box>
+            <Box>
+                {reply}
+            </Box>
+        </Box>
+        <Box>
+            <Box>
+                <Box><Icon as={AiOutlineLike} /></Box>
+                <Box>like</Box>
+            </Box>
+            <Box>
+                <Box ><ChatIcon /></Box>
+                <Box>reply</Box>
             </Box>
         </Box>
     </>)

@@ -25,14 +25,14 @@ const transport = nodemailer.createTransport({
 
 
 app.post("/signup", async (req, res) => {
-    const { username, email, password, age,role } = req.body;
+    const { username, email, password,role } = req.body;
 
     const check = await UserModel.findOne({ email });
     //console.log(check);
     if (check) {
         res.status(401).send({ message: "user already exist!!!" })
     } else {
-        const newUser = await UserModel.create({ email, password, age, username,role });
+        const newUser = await UserModel.create({ email, password, username,role });
 
         transport.sendMail({
             to: newUser.email,
@@ -41,7 +41,15 @@ app.post("/signup", async (req, res) => {
             text: `Hello ${newUser.email}, your account has been created successfully`
         })
 
-        res.status(200).send({ message: "user created successfully" });
+        const token = jwt.sign(
+            { id: newUser._id, email: newUser.email, username: newUser.username },
+            secret_key,
+            { expiresIn: "1 hour" }
+        )
+
+        const refresh = jwt.sign({ id: newUser._id, email: newUser.email }, refresh_key, { expiresIn: "7 days" })
+        return res.status(200).send({ message: "signup successfull", token: token, refresh: refresh,user:newUser });
+        
     }
 })
 
@@ -54,7 +62,7 @@ app.post("/signup/github", authMiddleware, async (req, res) => {
 
         const check = await UserModel.create({ email, username ,role});
         const token = jwt.sign(
-            { id: check._id, email: check.email, age: check.age },
+            { id: check._id, email: check.email, username: check.username },
             secret_key,
             { expiresIn: "1 hour" }
         )
@@ -81,13 +89,13 @@ app.post("/login", async (req, res) => {
     //console.log(check);
     if (check) {
         const token = jwt.sign(
-            { id: check._id, email: check.email, age: check.age },
+            { id: check._id, email: check.email, username: check.username },
             secret_key,
             { expiresIn: "1 hour" }
         )
 
         const refresh = jwt.sign({ id: check._id, email: check.email }, refresh_key, { expiresIn: "7 days" })
-        return res.status(200).send({ message: "login successfull", token: token, refresh: refresh });
+        return res.status(200).send({ message: "login successfull", token: token, refresh: refresh,user:check });
     } else {
         return res.status(401).send({ message: "Wrong Credentials, Try again!!!" });
     }
