@@ -1,9 +1,17 @@
 import { Box, Button, Input, Text, FormControl, FormLabel, Checkbox } from "@chakra-ui/react";
 import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
+import { loginUser , LERNULL} from "../../Store/auth/auth.actions";
 import styles from "./login.module.css";
 
+let init = {email:"",password:""}
 export default function Login() {
-    const [form,setForm] = useState({});
+    const [form,setForm] = useState(init);
+    const dispatch = useDispatch();
+    const userInfo = useSelector(store=>store.auth);
+    const nav = useNavigate();
+
     const handleChange = (e)=>{
         const {name,value} = e.target;
         setForm({...form,[name]:value});
@@ -13,8 +21,18 @@ export default function Login() {
             alert("some thing went wrong!!!")
             return;
         }
+        dispatch(loginUser(form))
         Array.from(document.getElementsByTagName("input")).forEach((el)=>el.value=null);
         console.log(form);
+    }
+
+    if(userInfo.isAuth){
+        alert(userInfo.message);
+        setTimeout(()=>{nav("/")},200)
+    }
+    if(userInfo.error){
+        alert(userInfo.message);
+        dispatch({type:LERNULL});
     }
     return (<>
         <Box className={styles.bg}>

@@ -1,4 +1,4 @@
-import { ERROR, LOADING, LOGIN, LOGOUT } from "./auth.actions";
+import { ERROR, LERNULL, LOADING, LOGIN, LOGOUT } from "./auth.actions";
 
 
 const initial = {
@@ -6,8 +6,9 @@ const initial = {
     token:"",
     refresh:"",
     isAuth:false,
-    loading:true,
-    error:true
+    loading:false,
+    error:false,
+    message:"null"
 }
 
 export default function authReducer(state=initial,{type,payload}){
@@ -16,13 +17,25 @@ export default function authReducer(state=initial,{type,payload}){
             return {...state,loading:true}
         }
         case ERROR: {
-            return {...state,error:true}
+            return {...state,
+                error:true,
+                message:payload.message
+            }
         }
         case LOGOUT:{
-            return {...state,user:payload,isAuth:false,token:"",refresh:"",loading:true,error:true}
+            return {...state,user:payload,isAuth:false,token:"",refresh:"",loading:false,error:false}
         }
         case LOGIN:{
-            return {...state,user:payload.user,token:payload.token,refresh:payload.refresh,isAuth:true,loading:false,error:false}
+            return {...state,
+                user:payload.user,
+                token:payload.token,
+                refresh:payload.refresh,
+                isAuth:true,
+                loading:false,
+                error:false, message:payload.message}
+        }
+        case LERNULL:{
+            return {...state,error:false,loading:false}
         }
         default:{
             return state;

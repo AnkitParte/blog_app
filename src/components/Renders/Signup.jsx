@@ -1,11 +1,16 @@
 import { Box, Text, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { LERNULL, signupUser } from "../../Store/auth/auth.actions";
+import { useDispatch,useSelector } from "react-redux";
 import styles from "./signup.module.css";
 
+let init = {email:"",username:"",password:""}
 //Login page and Signup page part is similar so all components are copy of that
 export default function Signup() {
-    const [form,setForm] = useState({});
+    const [form,setForm] = useState(init);
+    const userInfo = useSelector(store=>store.auth);
+    const dispatch = useDispatch();
     const nav = useNavigate();
     const handleChange=(e)=>{
         const {name,value} = e.target;
@@ -17,9 +22,18 @@ export default function Signup() {
             alert("something went wrong");
             return;
         }
+        dispatch(signupUser(form));
         Array.from(document.getElementsByTagName("input")).forEach(el=>el.value=null);
-        console.log(form);
+        //console.log(form);
     };
+    if(userInfo.isAuth){
+        alert(userInfo.message);
+        setTimeout(()=>{nav("/")},200)
+    }
+    if(userInfo.error){
+        alert(userInfo.message);
+        dispatch({type:LERNULL});
+    }
     return (<>
         <Box className={styles.bg}>
             <Box className={styles.login}>
