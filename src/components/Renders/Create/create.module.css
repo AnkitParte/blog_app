@@ -1,0 +1,22 @@
+.parent{
+    background-color: whitesmoke;
+    padding: 1rem 8rem 1rem 8rem;
+    display: flex;
+    justify-content: space-between;
+}
+
+.parent>div:nth-child(1){
+    border: 1px solid #DCDCDC;
+    border-radius: 6px;
+    background-color: white;
+    padding: 2rem;
+    width: 70%;
+    text-align: left;
+}
+.parent>div:nth-child(2){
+    width: 25%;
+}
+.parent>div:nth-child(1)>input{
+    font-size: 62px;
+    font-weight: bolder;
+}
