@@ -31,3 +31,7 @@ export const getArticle = (id)=>async(dispatch)=>{
         dispatch({type:ERRBLOGS});
     }
 }
+
+export const postBlog = (data)=>{
+    return axios.post(url,data);
+}

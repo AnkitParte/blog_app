@@ -4,6 +4,8 @@ import styles from "./navbar.module.css";
 import { useNavigate } from "react-router-dom";
 import { useSelector } from "react-redux";
 import {x} from "../Renders/Article"
+import { useState } from "react";
+import Logout from "./Logout";
 
 let logo = "https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_UQww2soKuUsjaOGNB38o.png";
 
@@ -11,11 +13,13 @@ let logo = "https://dev-to-uploads.s3.amazonaws.com/uploads/logos/resized_logo_U
 export default function Navbar() {
     const nav = useNavigate();
     const userInfo = useSelector(store => store.auth);
+    const [logout,setLogout] = useState(false);
     return (<>
+        {logout && <Logout isOpen={logout} onClose={()=>setLogout(false)}/>}
         <Box as="div" className={styles.navbar}>
             <Box className={styles.one}>
                 <Center>
-                    <Image onClick={() => nav("/")} className={styles.imgOne} src={logo} alt="dev image" />
+                    <Image onClick={()=>nav("/")} className={styles.imgOne} src={logo} alt="dev image" />
                 </Center>
                 <Center w="85%">
                     <InputGroup size='md'>
@@ -44,7 +48,7 @@ export default function Navbar() {
                             <Button onClick={() => nav("/createblog")} size={"md"} variant="outline" color="blue" borderColor={"blue"}>Create Post</Button>
                         </Center>
                         <Center mr={10}>
-                            <Image  onClick={() => nav("/")} className={styles.imgOne} src={x} alt="dev image" />
+                            <Image  onClick={() => setLogout(true)} className={styles.imgOne} src={x} alt="dev image" />
                         </Center>
                     </>)}
             </Box>

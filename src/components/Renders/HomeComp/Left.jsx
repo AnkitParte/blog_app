@@ -1,11 +1,15 @@
 import { Box, Button, Text } from "@chakra-ui/react";
+import { useState } from "react";
+import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styles from "./left.module.css"
 
 export default function Left() {
+    const userInfo = useSelector(store=>store.auth);
+    const [log,setLog] = useState(userInfo.isAuth);
     const nav = useNavigate();
     return (<>
-        <Box className={styles.topicsBox}>
+        {!log && <Box className={styles.topicsBox}>
             <Box>
                 <span style={{ color: "#3B49DF" }}>DEV Community</span><span>👨‍💻👩‍💻</span>
                 is a community of 33678 developers
@@ -15,7 +19,7 @@ export default function Left() {
             </Box>
             <Button mt={2} w="100%" onClick={() => nav("/signup")} size={"md"} variant="outline" color="blue" borderColor={"blue"}>Create account</Button>
             <Text className={styles.navspan} onClick={() => nav("/login")}>Log In</Text>
-        </Box>
+        </Box>}
         <br />
         <Box className={styles.features}>
             <Box>Home</Box>

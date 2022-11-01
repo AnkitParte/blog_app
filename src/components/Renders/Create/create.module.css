@@ -20,3 +20,12 @@
     font-size: 62px;
     font-weight: bolder;
 }
+.parent>div:nth-child(1)>textarea{
+    font-size: 18px;
+    font-weight: 400;
+}
+.parent>div:nth-child(1)>div{
+    display: flex;
+    gap: 10px;
+    margin-top: 10px;
+}
