@@ -1,4 +1,4 @@
-import { Box, Button, Input, Text, FormControl, FormLabel, Checkbox } from "@chakra-ui/react";
+import { Box, Button, Input, Text, FormControl, FormLabel, Checkbox, useToast, Tooltip } from "@chakra-ui/react";
 import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -11,6 +11,7 @@ export default function Login() {
     const dispatch = useDispatch();
     const userInfo = useSelector(store=>store.auth);
     const nav = useNavigate();
+    const toast = useToast();
 
     const handleChange = (e)=>{
         const {name,value} = e.target;
@@ -18,7 +19,14 @@ export default function Login() {
     }
     const handleSubmit = ()=>{
         if(form.email === "" || form.password.length<=4){
-            alert("some thing went wrong!!!")
+            toast({
+                title: 'Something went wrong',
+                description:"Please try again",
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+                position:"top"
+              })
             return;
         }
         dispatch(loginUser(form))
@@ -27,11 +35,27 @@ export default function Login() {
     }
 
     if(userInfo.isAuth){
-        alert(userInfo.message);
+        toast({
+            title: userInfo.message,
+            description:"Happy Blogging",
+            status: 'success',
+            duration: 3000,
+            isClosable: true,
+            position:"top"
+          })
+        //alert(userInfo.message);
         setTimeout(()=>{nav("/")},200)
     }
     if(userInfo.error){
-        alert(userInfo.message);
+        toast({
+            title:"Something went wrong",
+            description:userInfo.message,
+            status:"error",
+            duration:5000,
+            isClosable:true,
+            position:"top"
+        })
+        //alert(userInfo.message);
         dispatch({type:LERNULL});
     }
     return (<>
@@ -40,9 +64,13 @@ export default function Login() {
                 <Box className={styles.h2tag}>Welcome to DEV Community👨‍💻👩‍💻</Box>
                 <Box className={styles.divtag}>DEV Community👨‍💻👩‍💻 is a community of <span>{33678}</span> amazing developers</Box>
                 <br />
-                <Button w={"100%"} mt={1} color={"white"} background="black" _hover={{background:"blackAlpha.900"}} size={"lg"}>Continue with Github</Button>
+                <Tooltip label="this feature is under progress">
+                    <Button w={"100%"} mt={1} color={"white"} background="black" _hover={{background:"blackAlpha.900"}} size={"lg"}>Continue with Github</Button>   
+                </Tooltip>
                 <br />
-                <Button w={"100%"} mt={1} colorScheme={"twitter"} size={"lg"}>Continue with Twitter</Button>
+                <Tooltip label="this feature is under progress">
+                    <Button w={"100%"} mt={1} colorScheme={"twitter"} size={"lg"}>Continue with Twitter</Button>
+                </Tooltip>
                 <br />
                 <Text className={styles.text}>Have a password? Continue with your Email</Text>
                 <FormControl>

@@ -1,4 +1,4 @@
-import { Box, Center, Button, Image, Input, InputRightElement, InputGroup } from "@chakra-ui/react"
+import { Box, Center, Button, Image, Input, InputRightElement, InputGroup ,Tooltip} from "@chakra-ui/react"
 import { SearchIcon } from "@chakra-ui/icons";
 import styles from "./navbar.module.css";
 import { useNavigate } from "react-router-dom";
@@ -27,9 +27,11 @@ export default function Navbar() {
                             placeholder='search...'
                         />
                         <InputRightElement width='4.5rem'>
+                        <Tooltip label='this feature is under progress'>
                             <Button size='sm' ml='1.5rem'>
                                 {<SearchIcon />}
                             </Button>
+                        </Tooltip>
                         </InputRightElement>
                     </InputGroup>
                 </Center>

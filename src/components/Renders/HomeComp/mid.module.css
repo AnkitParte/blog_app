@@ -43,5 +43,11 @@
 .posts>div:nth-child(1)>div:hover{
     cursor: pointer;
 }
+.cover{
+    width: 100%;
+    height: 250px;
+    border-top-left-radius:6px ;
+    border-top-right-radius: 6px;
+}
 
 

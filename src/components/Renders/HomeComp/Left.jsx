@@ -1,15 +1,14 @@
 import { Box, Button, Text } from "@chakra-ui/react";
-import { useState } from "react";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import styles from "./left.module.css"
 
 export default function Left() {
     const userInfo = useSelector(store=>store.auth);
-    const [log,setLog] = useState(userInfo.isAuth);
+    //const [log,setLog] = useState(userInfo.isAuth);
     const nav = useNavigate();
     return (<>
-        {!log && <Box className={styles.topicsBox}>
+        {!userInfo?.isAuth && <Box className={styles.topicsBox}>
             <Box>
                 <span style={{ color: "#3B49DF" }}>DEV Community</span><span>👨‍💻👩‍💻</span>
                 is a community of 33678 developers
@@ -22,21 +21,21 @@ export default function Left() {
         </Box>}
         <br />
         <Box className={styles.features}>
-            <Box>Home</Box>
-            <Box>Listings</Box>
-            <Box>Podcasts</Box>
-            <Box>Videos</Box>
-            <Box>Tags</Box>
-            <Box>Forums</Box>
-            <Box>Sponsors</Box>
-            <Box>Contact</Box>
-            <Box>Guides</Box>
+            <Box>🌍{" "}Home</Box>
+            <Box>📜{" "}Listings</Box>
+            <Box>🎬{" "}Podcasts</Box>
+            <Box>🎥{" "}Videos</Box>
+            <Box>🏷{" "}Tags</Box>
+            <Box>🏴{" "}Forums</Box>
+            <Box>💎{" "}Sponsors</Box>
+            <Box>🚀{" "}Contact</Box>
+            <Box>🏇{" "}Guides</Box>
         </Box>
         <Text pl={4} pt={3} pb={3} fontWeight={700} fontSize={17} textAlign="left">Others</Text>
         <Box className={styles.others}>
-            <Box>Code of conduct</Box>
-            <Box>Terms of use</Box>
-            <Box>Privacy policy</Box>
+            <Box>⚙{" "}Code of conduct</Box>
+            <Box>🎓{" "}Terms of use</Box>
+            <Box>🛡{" "}Privacy policy</Box>
         </Box>
 
     </>)

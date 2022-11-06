@@ -1,4 +1,4 @@
-import { Box, Text, Button, FormControl, FormLabel, Input } from "@chakra-ui/react";
+import { Box, Text, Button, FormControl, FormLabel, Input ,Tooltip, useToast} from "@chakra-ui/react";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { LERNULL, signupUser } from "../../Store/auth/auth.actions";
@@ -10,6 +10,7 @@ let init = {email:"",username:"",password:""}
 export default function Signup() {
     const [form,setForm] = useState(init);
     const userInfo = useSelector(store=>store.auth);
+    const toast = useToast();
     const dispatch = useDispatch();
     const nav = useNavigate();
     const handleChange=(e)=>{
@@ -18,8 +19,16 @@ export default function Signup() {
     };
 
     const handleSubmit=()=>{
-        if(form.username.length<=3 || form.email.length<=5 || form.password.length <=5 ){
-            alert("something went wrong");
+        if(form.username.length<=1 || form.email.length<=5 || form.password.length <=5 ){
+            //alert("something went wrong");
+            toast({
+                title:"Something went wrong!!!",
+                status:"error",
+                description:"please try again",
+                isClosable:true,
+                duration:10000,
+                position:"top"
+            })
             return;
         }
         dispatch(signupUser(form));
@@ -27,11 +36,27 @@ export default function Signup() {
         //console.log(form);
     };
     if(userInfo.isAuth){
-        alert(userInfo.message);
+        //alert(userInfo.message);
+        toast({
+            title:userInfo.message,
+            status:"success",
+            description:"Welcome to DEV.to",
+            isClosable:true,
+            duration:10000,
+            position:"top"
+        })
         setTimeout(()=>{nav("/")},200)
     }
     if(userInfo.error){
-        alert(userInfo.message);
+        toast({
+            title:userInfo.message,
+            status:"error",
+            description:"something went wrong",
+            isClosable:true,
+            duration:10000,
+            position:"top"
+        })
+        //alert(userInfo.message);
         dispatch({type:LERNULL});
     }
     return (<>
@@ -40,9 +65,13 @@ export default function Signup() {
                 <Box className={styles.h2tag}>Welcome to DEV Community👨‍💻👩‍💻</Box>
                 <Box className={styles.divtag}>DEV Community👨‍💻👩‍💻 is a community of <span>{33678}</span> amazing developers</Box>
                 <br />
-                <Button w={"100%"} mt={1} colorScheme={"green"}color={"white"} background="black" _hover={{background:"blackAlpha.900"}} size={"lg"}>Continue with Github</Button>
+                <Tooltip label="this feature is under progress">
+                    <Button w={"100%"} mt={1} colorScheme={"green"}color={"white"} background="black" _hover={{background:"blackAlpha.900"}} size={"lg"}>Continue with Github</Button>
+                </Tooltip>
                 <br />
-                <Button w={"100%"} mt={1} colorScheme={"blue"} size={"lg"}>Continue with twitter</Button>
+                <Tooltip label="this feature is under progress">
+                    <Button w={"100%"} mt={1} colorScheme={"blue"} size={"lg"}>Continue with twitter</Button>
+                </Tooltip>
                 <br />
                 <Text className={styles.text}>Already have an account? <span className={styles.navspan} onClick={()=>nav("/login")}>Log in</span></Text>
                 

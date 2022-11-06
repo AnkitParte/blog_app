@@ -34,12 +34,12 @@ app.post("/signup", async (req, res) => {
     } else {
         const newUser = await UserModel.create({ email, password, username,role });
 
-        transport.sendMail({
-            to: newUser.email,
-            from: "ryusaki@gmail.com",
-            subject: "Signup Success",
-            text: `Hello ${newUser.email}, your account has been created successfully`
-        })
+        // transport.sendMail({
+        //     to: newUser.email,
+        //     from: "ryusaki@gmail.com",
+        //     subject: "Signup Success",
+        //     text: `Hello ${newUser.email}, your account has been created successfully`
+        // })
 
         const token = jwt.sign(
             { id: newUser._id, email: newUser.email, username: newUser.username },
