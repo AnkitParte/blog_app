@@ -42,7 +42,7 @@ export default function Navbar() {
                         <Button fontWeight={400} className={styles.navspan} onClick={() => nav("/login")}>Log In</Button>
                     </Center>
                         <Center>
-                            <Button onClick={() => nav("/signup")} size={"md"} variant="outline" color="blue" borderColor={"blue"}>Create account</Button>
+                            <Button ml={2} onClick={() => nav("/signup")} size={"md"} variant="outline" color="blue" borderColor={"blue"}>Create account</Button>
                         </Center></>)
                     :
                     (<>

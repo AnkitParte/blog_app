@@ -19,12 +19,34 @@ export default function Signup() {
     };
 
     const handleSubmit=()=>{
-        if(form.username.length<=1 || form.email.length<=5 || form.password.length <=5 ){
+        if(form.username.length<=1){
             //alert("something went wrong");
             toast({
                 title:"Something went wrong!!!",
                 status:"error",
-                description:"please try again",
+                description:"Add you username",
+                isClosable:true,
+                duration:10000,
+                position:"top"
+            })
+            return;
+        }
+        if(form.email.length<=5){
+            toast({
+                title:"Something went wrong!!!",
+                status:"error",
+                description:"enter your email",
+                isClosable:true,
+                duration:10000,
+                position:"top"
+            })
+            return;
+        }
+        if(form.password.length <=5 ){
+            toast({
+                title:"Something went wrong!!!",
+                status:"error",
+                description:"enter your password",
                 isClosable:true,
                 duration:10000,
                 position:"top"
@@ -85,7 +107,7 @@ export default function Signup() {
                 </FormControl>
                 <FormControl mt={1.5}>
                     <FormLabel>Password</FormLabel>
-                    <Input name="password" onChange={handleChange} placeholder="Enter your Password" />
+                    <Input type={"password"} name="password" onChange={handleChange} placeholder="Enter your Password" />
                 </FormControl>
                 <br />
                 <Button onClick={handleSubmit} mt={2} color={"white"} background="#3B49DF" w="100%" size={"lg"}>Continue</Button>

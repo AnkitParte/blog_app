@@ -5,7 +5,8 @@ export const ERRBLOGS = "/blog/error";
 export const GETBLOGS = "/blog/success";
 export const GETSOLO = "/blog/solo";
 
-let url = 'http://localhost:8080/posts/'
+let url = 'https://blogappbackend-production-0245.up.railway.app/posts/'
+let deployed = "https://blogappbackend-production-0245.up.railway.app/"
 export const getBlogs = ()=>async(dispatch)=>{
     dispatch({type:LOADBLOG});
 

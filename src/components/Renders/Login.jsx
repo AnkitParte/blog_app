@@ -18,10 +18,21 @@ export default function Login() {
         setForm({...form,[name]:value});
     }
     const handleSubmit = ()=>{
-        if(form.email === "" || form.password.length<=4){
+        if(form.email === ""){
             toast({
                 title: 'Something went wrong',
-                description:"Please try again",
+                description:"Enter you email address",
+                status: 'error',
+                duration: 5000,
+                isClosable: true,
+                position:"top"
+              })
+            return;
+        }
+        if(form.password.length<=4){
+            toast({
+                title: 'Something went wrong',
+                description:"password length is too short",
                 status: 'error',
                 duration: 5000,
                 isClosable: true,

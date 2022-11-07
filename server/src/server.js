@@ -3,7 +3,7 @@ const cors = require("cors");
 const http = require("http")
 const {Server} = require("socket.io");
 
-const connect = require("./config/config")
+const connect = require("../config/config")
 const dotenv = require("dotenv");
 dotenv.config();
 
@@ -11,11 +11,11 @@ const app = express()
 
 const port = process.env.port || 8080;
 const mongo = process.env.mongo_url;
-const userRouter = require("./features/users/users.router");
-const postRouter = require("./features/blogs/blogs.router");
-const commentRouter = require("./features/comments/comments.router");
-const commentModel = require("./features/comments/comments.model");
-const blogModel = require("./features/blogs/blogs.model");
+const userRouter = require("../features/users/users.router");
+const postRouter = require("../features/blogs/blogs.router");
+const commentRouter = require("../features/comments/comments.router");
+const commentModel = require("../features/comments/comments.model");
+const blogModel = require("../features/blogs/blogs.model");
 
 app.use(express.urlencoded({extended: true}))
 app.use(express.json())

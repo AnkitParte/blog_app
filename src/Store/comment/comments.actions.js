@@ -4,7 +4,7 @@ export const COMLOAD = "/comm/load";
 export const COMERR = "/comm/err";
 export const GETCOM = "/comm/get";
 
-let url = "http://localhost:8080/comments/";
+let url = "https://blogappbackend-production-0245.up.railway.app/comments/";
 
 export const getComm = (id)=>async(dispatch)=>{
     dispatch({type:COMLOAD});

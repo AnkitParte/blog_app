@@ -7,8 +7,8 @@ export const LOGOUT = "/user/logout";
 export const LERNULL = "/user/load/error/null"
 
 
-let urlSign = "http://localhost:8080/users/signup";
-let urlLog = "http://localhost:8080/users/login";
+let urlSign = "https://blogappbackend-production-0245.up.railway.app/users/signup";
+let urlLog = "https://blogappbackend-production-0245.up.railway.app/users/login";
 export const loginUser = (creds)=>async(dispatch)=>{
     dispatch({type:LOADING});
     try{
