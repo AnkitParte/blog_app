@@ -4,10 +4,10 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm start`
+<h4>Please visit the below link</h4>
 
 Runs the app in the development mode.<br />
-Open [DEV community](https://blog-app-kappa-sepia.vercel.app/) to view it in the browser.
+Open [DEV community👨‍💻👩‍💻](https://blog-app-kappa-sepia.vercel.app/) to view it in the browser.
 
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
+The page content will be loaded as soon as you visit.<br />
+
