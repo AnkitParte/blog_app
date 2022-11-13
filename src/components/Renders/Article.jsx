@@ -10,6 +10,7 @@ import { useRef } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect } from "react";
 import { getArticle } from "../../Store/blog/blog.actions";
+import parse from "html-react-parser";
 //import { getComm } from "../../Store/comment/comments.actions";
 import io from "socket.io-client";
 
@@ -107,7 +108,7 @@ export default function Article() {
                     <Box>{solo?.Author?.username}</Box>
                 </Box>
                 <Box>{solo?.Title}</Box>
-                <Box>{solo && solo.description}</Box>
+                <Box className={styles.parseDivA}>{solo && parse(solo.description)}</Box>
                 <br />
                 <hr />
                 <br />

@@ -24,8 +24,17 @@
     font-size: 18px;
     font-weight: 400;
 }
-.parent>div:nth-child(1)>div{
+.btnDiv{
     display: flex;
     gap: 10px;
     margin-top: 10px;
+}
+.previewDiv{
+    min-height: 200px;
+    border: 1px gray solid;
+    padding: 0.5rem;
+    margin-top: 10px;
+}
+.previewDiv li{
+    margin-left:2rem ;
 }
