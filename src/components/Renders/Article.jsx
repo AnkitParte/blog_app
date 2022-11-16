@@ -108,7 +108,7 @@ export default function Article() {
                     <Box>{solo?.Author?.username}</Box>
                 </Box>
                 <Box>{solo?.Title}</Box>
-                {solo && <Box className={styles.parseDivA}>{parse(solo.description)}</Box>}
+                {solo && <Box className={styles.parseDivA} dangerouslySetInnerHTML={{__html:solo?.description}}/>}
                 <br />
                 <hr />
                 <br />
