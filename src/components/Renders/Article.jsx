@@ -24,7 +24,7 @@ export default function Article() {
     const { id } = useParams();
     const { solo} = useSelector(store => store.blogs);
     const auth = useSelector(store => store.auth);
-    console.log(auth.username);
+    //console.log(auth.username);
     const [comm, setComm] = useState([]);
     const dispatch = useDispatch();
 
