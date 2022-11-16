@@ -39,7 +39,7 @@ export default function Article() {
             .then(res => res.json())
             .then(res => {
                 //console.log(res.data[0].comments);
-                setComm(res.data[0].comments);
+                setComm(res.data[0]?.comments);
             })
     }
     const postComment = () => {
@@ -108,7 +108,7 @@ export default function Article() {
                     <Box>{solo?.Author?.username}</Box>
                 </Box>
                 <Box>{solo?.Title}</Box>
-                <Box className={styles.parseDivA}>{solo && parse(solo.description)}</Box>
+                {solo && <Box className={styles.parseDivA}>{parse(solo.description)}</Box>}
                 <br />
                 <hr />
                 <br />
